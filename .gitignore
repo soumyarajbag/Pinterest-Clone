@@ -9,8 +9,8 @@
 # testing
 /coverage
 
-.env
-/firebase/
+.env*
+firebase/
 
 # next.js
 /.next/
