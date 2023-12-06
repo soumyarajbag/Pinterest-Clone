@@ -7,6 +7,7 @@ import UserTag from "./UserTag";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import app from "@/firebase/firebase";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 interface UploadType {
   title: string;
   description: string;
@@ -15,6 +16,7 @@ interface UploadType {
 
 const Form = () => {
   const { data: session } = useSession();
+  const router = useRouter();
   const intialData: UploadType = {
     title: "",
     description: "",
@@ -30,6 +32,7 @@ const Form = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
   const onSave = ()=>{
+    setLoading(true)
     console.log(formValues)
     console.log(file)
     uploadFile()
@@ -50,11 +53,14 @@ const Form = () => {
                 username:session?.user?.name,
                 email:session?.user?.email,
                 userImage:session?.user?.image,
+                id:postId
             }
             await setDoc(doc(db, "posts", postId), {
                 ...uploadData
               }).then(res=>{
                 console.log('Document posted : ', res);
+                setLoading(true)
+                router.push('/'+session?.user?.email)
               }).catch(err=>{
                 console.log('Error : ', err);
               });

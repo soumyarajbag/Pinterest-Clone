@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 const UserTag = ({user}:{user:any}) => {
   return (
-    <div className=''>
+    <div className='flex flex-col'>
        {user?
        <div className='flex gap-3 
        items-center'>

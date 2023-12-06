@@ -21,6 +21,13 @@ const Header = () => {
     });
   }
 
+  const onCreateClick = ()=>{
+    if(session?.user){
+      router.push('/pin-builder')
+    }else{
+      signIn()
+    }
+  }
   useEffect(() => {
    if(session){
     saveUserInfo()
@@ -31,7 +38,7 @@ const Header = () => {
     <div className='flex flex-row  gap-3 md:gap-2 items-center p-6 '>
       <Link href={"/"}><Image src="/logo.png" alt='Pinterest' width={50} height={50} className='hover:bg-gray-300 p-2 rounded-full cursor-pointer' /></Link>
       <button className='bg-black text-white p-2 rounded-full px-4'>Home</button>
-      <button onClick={()=>router.push('/pin-builder')} className=' text-black font-semibold p-2 rounded-full px-4'>Create</button>
+      <button onClick={()=>onCreateClick()} className=' text-black font-semibold p-2 rounded-full px-4'>Create</button>
       <div className='hidden md:flex flex-row w-full items-center bg-[#e9e9e9]  p-3 gap-3 rounded-full'>
         <HiSearch className="text-[25px] text-gray-500" />
         <input type="text" placeholder="Search" className='bg-transparent outline-none' />

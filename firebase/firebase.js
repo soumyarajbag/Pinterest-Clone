@@ -11,7 +11,8 @@ const firebaseConfig = {
   projectId: "pinterest-407223",
   storageBucket: "pinterest-407223.appspot.com",
   messagingSenderId: "919066248908",
-  appId: "1:919066248908:web:d521ed7874348ce28d2469",
+  appId: "1:919066248908:web:f75d4ee97255a4728d2469",
+  measurementId: "G-4QFQ0M0CH9",
 };
 
 // Initialize Firebase
