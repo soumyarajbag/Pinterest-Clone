@@ -6,6 +6,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { doc, setDoc, getFirestore } from 'firebase/firestore'
 import app from '../firebase/firebase'
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 const Header = () => {
   const { data: session } = useSession()
   
@@ -28,7 +29,7 @@ const Header = () => {
 
   return (
     <div className='flex flex-row  gap-3 md:gap-2 items-center p-6 '>
-      <Image src="/logo.png" alt='Pinterest' width={50} height={50} className='hover:bg-gray-300 p-2 rounded-full cursor-pointer' />
+      <Link href={"/"}><Image src="/logo.png" alt='Pinterest' width={50} height={50} className='hover:bg-gray-300 p-2 rounded-full cursor-pointer' /></Link>
       <button className='bg-black text-white p-2 rounded-full px-4'>Home</button>
       <button onClick={()=>router.push('/pin-builder')} className=' text-black font-semibold p-2 rounded-full px-4'>Create</button>
       <div className='hidden md:flex flex-row w-full items-center bg-[#e9e9e9]  p-3 gap-3 rounded-full'>
